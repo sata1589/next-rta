@@ -1,6 +1,5 @@
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -8,7 +7,6 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { Thread } from "@/type/post";
-import { format } from "date-fns/fp";
 import { formatDistanceToNow } from "date-fns";
 
 interface ThreadProps {
@@ -17,8 +15,6 @@ interface ThreadProps {
 
 export function ThreadItem({ thread }: ThreadProps) {
   const { id, user, title, createdAt } = thread;
-  const formatData = format("yyyy-MM-dd HH:mm:ss");
-  const createdAtString = formatData(createdAt);
   return (
     <Link href={`./thread/${id}/content`}>
       <Card>

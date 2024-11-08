@@ -1,7 +1,7 @@
 "use client";
 import { Thread } from "@/type/post";
 import { ThreadItem } from "./threadItem";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface FirstThreadProps {
   firstThreads: Thread[];

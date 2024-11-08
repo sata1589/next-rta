@@ -1,5 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Facebook, Twitter, Linkedin, Mail } from "lucide-react";
 
 export default function AboutPage() {
