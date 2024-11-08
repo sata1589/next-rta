@@ -9,6 +9,6 @@ export interface ThreadContent {
   id: number;
   user: string;
   content: string;
-  filePath: string;
+  filePath: string | null;
   createdAt: Date;
 }

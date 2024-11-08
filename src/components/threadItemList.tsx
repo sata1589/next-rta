@@ -2,17 +2,15 @@
 import { Thread } from "@/type/post";
 import { ThreadItem } from "./threadItem";
 import { useState } from "react";
+import { getThreads } from "@/actions/thread";
 
 interface FirstThreadProps {
   firstThreads: Thread[];
 }
 
 export function ThreadItemList({ firstThreads }: FirstThreadProps) {
-  async function fetchThreads(page: number) {
-    const res = await fetch(`http://localhost:3000/api/thread?page=${page}`, {
-      cache: "no-store",
-    });
-    const newData = await res.json();
+  async function addThreads(page: number) {
+    const newData = await getThreads(page);
     if (newData.length !== 0) {
       setThreads((prevThreads) => [...prevThreads, ...newData]);
     } else {
@@ -26,7 +24,7 @@ export function ThreadItemList({ firstThreads }: FirstThreadProps) {
 
   const handleLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
-    fetchThreads(page);
+    addThreads(page);
   };
 
   return (

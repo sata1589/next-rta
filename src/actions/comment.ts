@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import { formSchema } from "@/components/thread/commentCreate";
 import { z } from "zod";
 import prisma from "@/lib/db";
+import { ThreadContent } from "@prisma/client";
 
 async function getMaxId(threadId: number) {
   const result = await prisma.threadContent.aggregate({
@@ -57,4 +58,13 @@ export async function uploadFile({
   }
 }
 
-export async function getAllCommentByThread() {}
+export async function getAllCommentByThread(id: string) {
+  return await prisma.threadContent.findMany({
+    where: {
+      threadId: parseInt(id),
+    },
+    orderBy: {
+      createdAt: "asc",
+    },
+  });
+}
