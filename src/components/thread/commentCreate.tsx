@@ -26,7 +26,7 @@ import { uploadFile } from "@/actions/comment";
 
 const allowedAudioTypes = ["audio/mpeg", "audio/wav", "audio/ogg"];
 const fileSchema = z
-  .custom<File>()
+  .custom<File | undefined>()
   .refine((file) => !file || file.size <= 200 * 1024, {
     message: "ファイルサイズは200KB以下にしてください。",
   })

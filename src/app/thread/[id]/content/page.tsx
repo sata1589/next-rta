@@ -9,7 +9,6 @@ async function GetAllComment(id: string) {
     return undefined;
   }
   const data: ThreadContent[] = await res.json();
-  console.log();
   return data;
 }
 

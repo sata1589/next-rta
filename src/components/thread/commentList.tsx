@@ -13,10 +13,15 @@ export function CommentList({ comments, threadId }: CommentsProps) {
       {comments.map((comment, index) => (
         <CommentItem key={index} comment={comment} index={index + 1} />
       ))}
-
-      <div className="flex justify-center my-4">
-        <CommentCreateButton threadId={threadId} />
-      </div>
+      {comments.length >= 100 ? (
+        <div className="flex justify-center my-4">
+          このスレッドにはこれ以上コメントを追加できません。
+        </div>
+      ) : (
+        <div className="flex justify-center my-4">
+          <CommentCreateButton threadId={threadId} />
+        </div>
+      )}
     </div>
   );
 }
